@@ -45,9 +45,9 @@ export function SalesChart() {
             <Line 
               type="monotone" 
               dataKey="vendas" 
-              stroke="hsl(var(--primary))" 
+              stroke="hsl(var(--success))" // Alterado de --primary para --success (verde)
               strokeWidth={3}
-              dot={{ fill: 'hsl(var(--primary))', strokeWidth: 2, r: 4 }}
+              dot={{ fill: 'hsl(var(--success))', strokeWidth: 2, r: 4 }}
               name="Vendas Realizadas"
             />
             <Line 
