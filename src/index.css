@@ -2,98 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System - Sistema de Gestão Comercial */
-
 @layer base {
   :root {
-    --background: 254 252 232;
-    --foreground: 30 27 75;
+    /* Cor do fundo principal */
+    --background: 255 255 255;
+    --foreground: 17 24 39;
 
-    --card: 255 255 255;
-    --card-foreground: 51 51 51;
+    /* Cor do fundo dos cards */
+    --card: 246 248 250;
+    --card-foreground: 17 24 39;
 
-    --popover: 255 255 255;
-    --popover-foreground: 51 51 51;
+    /* Cor da janela temporária (popover) */
+    --popover: 246 248 250;
+    --popover-foreground: 17 24 39;
 
-    --primary: 245 158 11;
-    --primary-foreground: 30 27 75;
+    /* Cor primária (botões principais, links etc.) */
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 254 240 138;
-    --secondary-foreground: 30 27 75;
+    /* Cor secundária (elementos complementares) */
+    --secondary: 226 232 240;
+    --secondary-foreground: 17 24 39;
 
-    --muted: 254 249 195;
-    --muted-foreground: 75 85 99;
+    /* Cor para elementos discretos ou de menor foco */
+    --muted: 241 245 249;
+    --muted-foreground: 71 85 105;
 
-    --accent: 253 230 138;
-    --accent-foreground: 30 27 75;
+    /* Cor de destaque (accent) - atualizada para cinza escuro */
+    --accent: 100 116 139;
+    --accent-foreground: 248 250 252;
 
-    --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
-
+    /* Cor para elementos de sucesso (ex: status "ok") */
     --success: 34 197 94;
-    --success-foreground: 248 250 252;
+    --success-foreground: 255 255 255;
 
+    /* Cor para alertas ou avisos */
     --warning: 251 191 36;
     --warning-foreground: 30 27 75;
 
-    --border: 229 231 235;
-    --input: 229 231 235;
-    --ring: 245 158 11;
+    /* Cor para bordas e inputs */
+    --border: 203 213 225;
+    --input: 203 213 225;
 
+    /* Cor da borda de foco */
+    --ring: 59 130 246;
+
+    /* Raio padrão dos cantos arredondados */
     --radius: 0.5rem;
 
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 31 41 55;
-    --sidebar-primary: 245 158 11;
-    --sidebar-primary-foreground: 30 27 75;
-    --sidebar-accent: 254 240 138;
-    --sidebar-accent-foreground: 30 27 75;
-    --sidebar-border: 229 231 235;
-    --sidebar-ring: 245 158 11;
+    /* Gradiente para elementos principais */
+    --gradient-primary: linear-gradient(135deg, rgb(59 130 246) 0%, rgb(96 165 250) 100%);
+    --gradient-secondary: linear-gradient(135deg, rgb(226 232 240) 0%, rgb(203 213 225) 100%);
+    --gradient-success: linear-gradient(135deg, rgb(17 24 39) 0%, rgb(17 24 39) 100%);
 
-    /* Gradientes corporativos */
-    --gradient-primary: linear-gradient(135deg, rgb(245 158 11) 0%, rgb(251 191 36) 100%);
-    --gradient-secondary: linear-gradient(135deg, rgb(254 240 138) 0%, rgb(253 230 138) 100%);
-    --gradient-success: linear-gradient(135deg, rgb(34 197 94) 0%, rgb(22 163 74) 100%);
+    /* Cores da sidebar */
+    --sidebar-background: 246 248 250;
+    --sidebar-foreground: 17 24 39;
+    --sidebar-primary: 59 130 246;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 100 116 139;
+    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-border: 203 213 225;
+    --sidebar-ring: 59 130 246;
   }
 
+  /* Modo escuro da aplicação */
   .dark {
-    --background: 55 48 163;
-    --foreground: 254 252 232;
+    --background: 15 23 42;
+    --foreground: 243 244 246;
 
-    --card: 67 56 202;
-    --card-foreground: 254 252 232;
+    --card: 30 41 59;
+    --card-foreground: 243 244 246;
 
-    --popover: 67 56 202;
-    --popover-foreground: 254 252 232;
+    --popover: 30 41 59;
+    --popover-foreground: 243 244 246;
 
-    --primary: 251 191 36;
-    --primary-foreground: 30 27 75;
+    --primary: 96 165 250;
+    --primary-foreground: 15 23 42;
 
-    --secondary: 79 70 229;
-    --secondary-foreground: 254 252 232;
+    --secondary: 30 41 59;
+    --secondary-foreground: 243 244 246;
 
-    --muted: 99 102 241;
+    --muted: 51 65 85;
     --muted-foreground: 203 213 225;
 
-    --accent: 109 40 217;
-    --accent-foreground: 254 252 232;
+    --accent: 148 163 184;
+    --accent-foreground: 15 23 42;
 
     --destructive: 220 38 38;
-    --destructive-foreground: 248 250 252;
+    --destructive-foreground: 255 255 255;
 
-    --border: 99 102 241;
-    --input: 99 102 241;
-    --ring: 251 191 36;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 96 165 250;
 
-    --sidebar-background: 67 56 202;
-    --sidebar-foreground: 254 252 232;
-    --sidebar-primary: 251 191 36;
-    --sidebar-primary-foreground: 30 27 75;
-    --sidebar-accent: 109 40 217;
-    --sidebar-accent-foreground: 254 252 232;
-    --sidebar-border: 99 102 241;
-    --sidebar-ring: 251 191 36;
+    --sidebar-background: 30 41 59;
+    --sidebar-foreground: 243 244 246;
+    --sidebar-primary: 96 165 250;
+    --sidebar-primary-foreground: 15 23 42;
+    --sidebar-accent: 148 163 184;
+    --sidebar-accent-foreground: 15 23 42;
+    --sidebar-border: 51 65 85;
+    --sidebar-ring: 96 165 250;
   }
 }
 
@@ -108,26 +118,32 @@
 }
 
 @layer utilities {
+  /* Gradiente utilitário principal */
   .gradient-primary {
     background: var(--gradient-primary);
   }
-  
+
+  /* Gradiente utilitário secundário */
   .gradient-secondary {
     background: var(--gradient-secondary);
   }
-  
+
+  /* Gradiente de sucesso */
   .gradient-success {
     background: var(--gradient-success);
   }
 
+  /* Animação de fade-in */
   .animate-fade-in {
     animation: fadeIn 0.3s ease-out;
   }
 
+  /* Animação para elementos surgirem de baixo para cima */
   .animate-slide-up {
     animation: slideUp 0.3s ease-out;
   }
 
+  /* Animação de pulsação lenta */
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
