@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-import { Inventory, Mail, Lock, ArrowRight } from "lucide-react";
+import { Package, Mail, Lock, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
@@ -47,7 +47,7 @@ export default function Login() {
         <div className="text-center space-y-2">
           <div className="flex justify-center">
             <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center shadow-lg">
-              <Inventory className="w-8 h-8 text-white" />
+              <Package className="w-8 h-8 text-white" />
             </div>
           </div>
           <h1 className="text-3xl font-bold text-foreground">CommerceFlow</h1>

@@ -1,4 +1,3 @@
-
 import { 
   BarChart3, 
   Package, 
@@ -8,7 +7,6 @@ import {
   DollarSign, 
   Settings,
   TrendingUp,
-  Inventory,
   Calculator
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -104,7 +102,7 @@ export function AppSidebar() {
       <SidebarHeader className="p-6 border-b border-border/50">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
-            <Inventory className="w-4 h-4 text-white" />
+            <Package className="w-4 h-4 text-white" />
           </div>
           <div>
             <h2 className="text-lg font-semibold text-foreground">CommerceFlow</h2>

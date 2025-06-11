@@ -1,5 +1,4 @@
-
-import { Bell, Search, User, Menu } from "lucide-react";
+import { Bell, Search, User, Menu, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
