@@ -53,7 +53,7 @@ export function Header() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden md:block text-left">
-                  <p className="text-sm font-medium">Admin User</p>
+                  <p className="text-sm font-medium">Juan</p>
                   <p className="text-xs text-muted-foreground">Administrador</p>
                 </div>
               </Button>
