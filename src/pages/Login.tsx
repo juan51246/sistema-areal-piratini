@@ -1,147 +1,96 @@
-
+// Importa o hook useState do React para gerenciar estados locais
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Separator } from "@/components/ui/separator";
-import { Package, Mail, Lock, ArrowRight } from "lucide-react";
+
+// Importa o hook personalizado useAuth do contexto de autenticação
+import { useAuth } from "@/contexts/AuthContext";
+
+// Importa o hook useNavigate do React Router para redirecionamentos
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
 
+// Define o componente Login
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  // Extrai a função de login do contexto de autenticação
+  const { login } = useAuth();
+
+  // Hook para navegação programática (redirecionamento)
   const navigate = useNavigate();
-  const { toast } = useToast();
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  // Estados locais para email, senha e mensagens de erro
+  const [email, setEmail] = useState("admin@teste.com");
+  const [password, setPassword] = useState("123456");
+  const [error, setError] = useState("");
 
-    // Simulação de autenticação
-    setTimeout(() => {
-      if (email && password) {
-        toast({
-          title: "Login realizado com sucesso!",
-          description: "Bem-vindo ao CommerceFlow",
-        });
-        navigate("/");
-      } else {
-        toast({
-          title: "Erro no login",
-          description: "Por favor, verifique suas credenciais",
-          variant: "destructive",
-        });
-      }
-      setIsLoading(false);
-    }, 1500);
+  // Função chamada ao enviar o formulário
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Previne o comportamento padrão do submit (recarregar página)
+    try {
+      // Tenta fazer login com as credenciais informadas
+      await login(email, password);
+      navigate("/"); // Se for bem-sucedido, redireciona para a página inicial
+    } catch (err: any) {
+      // Em caso de erro (ex: login inválido), exibe mensagem
+      setError("Credenciais inválidas");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-accent/20 to-primary/10 flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6 animate-fade-in">
-        {/* Logo e título */}
-        <div className="text-center space-y-2">
-          <div className="flex justify-center">
-            <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center shadow-lg">
-              <Package className="w-8 h-8 text-white" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold text-foreground">CommerceFlow</h1>
-          <p className="text-muted-foreground">Sistema de Gestão Comercial</p>
-        </div>
+    // Container principal que centraliza a tela e define o fundo
+    <div className="min-h-screen flex items-center justify-center bg-muted px-4">
+      
+      {/* Card do formulário com sombra, borda, animação e responsividade */}
+      <div className="bg-card shadow-lg rounded-2xl p-8 w-full max-w-md animate-fade-in border">
+        
+        {/* Título da tela */}
+        <h1 className="text-2xl font-bold mb-6 text-center text-foreground">
+          Acesso ao Sistema
+        </h1>
 
         {/* Formulário de login */}
-        <Card className="shadow-xl border-0 bg-card/50 backdrop-blur">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center text-foreground">Entrar</CardTitle>
-            <CardDescription className="text-center text-muted-foreground">
-              Digite suas credenciais para acessar o sistema
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground">Email</Label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10"
-                    required
-                  />
-                </div>
-              </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          
+          {/* Campo de e-mail */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
+              E-mail
+            </label>
+            <input
+              id="email"
+              type="email"
+              className="w-full px-4 py-2 border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Atualiza o estado com o valor digitado
+              required
+            />
+          </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-foreground">Senha</Label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10"
-                    required
-                  />
-                </div>
-              </div>
+          {/* Campo de senha */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-muted-foreground mb-1">
+              Senha
+            </label>
+            <input
+              id="password"
+              type="password"
+              className="w-full px-4 py-2 border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Atualiza o estado da senha
+              required
+            />
+          </div>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="remember" />
-                  <Label htmlFor="remember" className="text-sm text-muted-foreground">
-                    Lembrar-me
-                  </Label>
-                </div>
-                <Button variant="link" className="p-0 h-auto text-primary">
-                  Esqueceu a senha?
-                </Button>
-              </div>
+          {/* Exibe mensagem de erro se houver */}
+          {error && (
+            <p className="text-sm text-red-600 text-center">{error}</p>
+          )}
 
-              <Button 
-                type="submit" 
-                className="w-full gradient-primary border-0 hover:opacity-90 transition-opacity"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  "Entrando..."
-                ) : (
-                  <>
-                    Entrar
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </>
-                )}
-              </Button>
-            </form>
-
-            <Separator />
-
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground">
-                Não tem uma conta?{" "}
-                <Button variant="link" className="p-0 h-auto text-primary">
-                  Solicitar acesso
-                </Button>
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Informações adicionais */}
-        <div className="text-center text-xs text-muted-foreground">
-          <p>© 2024 CommerceFlow. Todos os direitos reservados.</p>
-          <p>Versão 1.0.0 | Suporte: suporte@commerceflow.com</p>
-        </div>
+          {/* Botão de login com gradiente e efeito hover */}
+          <button
+            type="submit"
+            className="w-full py-2 rounded-lg text-white font-semibold gradient-primary hover:opacity-90 transition"
+          >
+            Entrar
+          </button>
+        </form>
       </div>
     </div>
   );
