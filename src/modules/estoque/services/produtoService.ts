@@ -1,5 +1,7 @@
 import { Produto } from "../types/produto";
 
+
+//alterar a quantidade de produtos depois..
 const mockProdutos: Produto[] = [
   { id: "1", nome: "Areia Fina", categoria: "Areia", estoque: 120 },
   { id: "2", nome: "Brita 01", categoria: "Brita", estoque: 80 },
