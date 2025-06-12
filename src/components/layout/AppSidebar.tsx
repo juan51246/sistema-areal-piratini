@@ -105,7 +105,7 @@ export function AppSidebar() {
             <Package className="w-4 h-4 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-foreground">CommerceFlow</h2>
+            <h2 className="text-lg font-semibold text-foreground">ArealPiratini</h2>
             <p className="text-xs text-muted-foreground">Sistema de Gestão</p>
           </div>
         </div>
@@ -147,7 +147,7 @@ export function AppSidebar() {
 
       <SidebarFooter className="p-4 border-t border-border/50">
         <div className="text-xs text-muted-foreground text-center">
-          © 2024 CommerceFlow v1.0
+          © 2025 ArealPiratini V0.0
         </div>
       </SidebarFooter>
     </Sidebar>
