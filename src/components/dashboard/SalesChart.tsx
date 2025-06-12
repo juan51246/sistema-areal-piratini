@@ -26,37 +26,37 @@ export function SalesChart() {
             <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
             <XAxis 
               dataKey="name" 
-              tick={{ fill: 'hsl(var(--muted-foreground))' }}
-              axisLine={{ stroke: 'hsl(var(--border))' }}
+              tick={{ fill: 'rgb(var(--muted-foreground))' }}
+              axisLine={{ stroke: 'rgb(var(--border))' }}
             />
             <YAxis 
-              tick={{ fill: 'hsl(var(--muted-foreground))' }}
-              axisLine={{ stroke: 'hsl(var(--border))' }}
+              tick={{ fill: 'rgb(var(--muted-foreground))' }}
+              axisLine={{ stroke: 'rgb(var(--border))' }}
             />
             <Tooltip 
               contentStyle={{
-                backgroundColor: 'hsl(var(--card))',
-                border: '1px solid hsl(var(--border))',
+                backgroundColor: 'rgb(var(--card))',
+                border: '1px solid rgb(var(--border))',
                 borderRadius: '8px',
-                color: 'hsl(var(--foreground))'
+                color: 'rgb(var(--foreground))'
               }}
               formatter={(value) => [`R$ ${value?.toLocaleString()}`, '']}
             />
             <Line 
               type="monotone" 
               dataKey="vendas" 
-              stroke="hsl(var(--success))" // Alterado de --primary para --success (verde)
+              stroke="rgb(var(--success))" // Alterado de --primary para --success (verde)
               strokeWidth={3}
-              dot={{ fill: 'hsl(var(--success))', strokeWidth: 2, r: 4 }}
+              dot={{ fill: 'rgb(var(--success))', strokeWidth: 2, r: 4 }}
               name="Vendas Realizadas"
             />
             <Line 
               type="monotone" 
               dataKey="meta" 
-              stroke="hsl(var(--muted-foreground))" 
+              stroke="rgb(var(--muted-foreground))" 
               strokeWidth={2}
               strokeDasharray="5 5"
-              dot={{ fill: 'hsl(var(--muted-foreground))', strokeWidth: 2, r: 3 }}
+              dot={{ fill: 'rgb(var(--muted-foreground))', strokeWidth: 2, r: 3 }}
               name="Meta"
             />
           </LineChart>
