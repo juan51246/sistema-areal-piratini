@@ -29,8 +29,6 @@ import { PrivateRoute } from "@/components/PrivateRoute";
 // Importa o contexto de autenticação
 import { AuthProvider } from "./contexts/AuthContext";
 
-//Importa a lista de produtos -- exportação padrão
-import ListaProdutos from "./modules/estoque/pages/ListaProdutos"
 // Cria uma instância do client para o React Query
 const queryClient = new QueryClient();
 
@@ -77,17 +75,6 @@ const App = () => (
                 <PrivateRoute>
                   <AppLayout>
                     <Dashboard />
-                  </AppLayout>
-                </PrivateRoute>
-              }
-            />
-
-            <Route
-              path="/estoque"
-              element={
-                <PrivateRoute>
-                  <AppLayout>
-                    <ListaProdutos />
                   </AppLayout>
                 </PrivateRoute>
               }
